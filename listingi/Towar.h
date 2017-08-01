@@ -1,25 +1,25 @@
 #pragma once
 #include <string>
 #include <fstream>
-class Towar 
+class Commodity 
 {
 private:
 	std::string nrArt;
-	std::string nazwaTowaru;
-	int ileSzt;
-	double cenaNettoZakupu=0;
-	double Vat=0;
-	double cenaBruttoZakupu=0;
-	double marza=0;
-	double cenaNettoSprzed=0;
-	double cenaBruttoSprzed=0;
+	std::string productName;
+	int pcs;
+	double netPurchasePrice=0;
+	double tax=0;
+	double grossPurchasePrice=0;
+	double margin=0;
+	double netSalesPrice=0;
+	double grossSalesPrice=0;
 
 public:
-	Towar();
-	void dodaj();
-	double obliczNetto(double cenaNettoZakupu, double cenaNettoSprzed, double marza);
-	double obliczBrutto(double cenaNettoSprzed, double vat, double cenaBruttoSprzed);
-	void pokaz();
-	~Towar();
+	Commodity();
+	void add();
+	double netCalculation(double netPurchasePrice, double netSalesPrice, double margin);
+	double grossCalculation(double netPurchasePrice);
+	void display();
+	~Commodity();
 };
 

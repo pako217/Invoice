@@ -1,5 +1,7 @@
 // listingi.cpp: Okreœla punkt wejœcia dla aplikacji konsoli.
-//
+//autor Rafal Bujak 
+// last update 01-08-2017
+
 
 #include "InvoicePCH.h"
 #include <iostream>
@@ -11,16 +13,16 @@ using namespace std;
 
 int main()
 {
-	Klient nowy;
-	cout << "Witam w programie do wystawiania faktur VAT" << endl;
-	nowy.menu();
+	Customer start;
+	cout << "Welcome to the VAT invoice program" << endl;
+	start.menu();
 	/*Klient nowy;
 
 	nowy.wypelnij();
 	cout << "-------------" << endl;
 	nowy.wyswietl();*/
 	//getchar();
-	//getchar();
+	getchar();
 
 	return 0;
 }

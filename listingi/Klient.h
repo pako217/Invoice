@@ -2,34 +2,34 @@
 #include "Towar.h"
 #include <string>
 #include <fstream>
-class Klient 
-	: public Towar
+class Customer 
+	: public Commodity
 {
 private:
-	// odbiorca
-	std::string nazwaKlienta;
-	std::string nazwaFirmy;
-	std::string ulica;
-	std::string nrDomu;
-	std::string kodPocztowy;
-	std::string miejscowosc;
-	std::string NIP;
-	//sprzedaca
-	std::string Firma = {"SOMATIN Urzadzenia Pomiarowe"};
-	std::string nazUlicy = { "Kepinska" };
-	std::string dom = { "16a/12" };
-	std::string poczta = {"46-264"};
-	std::string miejsc = {"Komorzno"};
-	std::string nip = {"751-159-87-52"};
+	// 	receiver
+	std::string customerID;
+	std::string companyName;
+	std::string street;
+	std::string houseNumber;
+	std::string zipCode;
+	std::string city;
+	std::string VATiD;
+	//seller
+	std::string company = {"SOMATIN Urzadzenia Pomiarowe"};
+	std::string streetName = { "Kepinska" };
+	std::string houseNr = { "16a/12" };
+	std::string post = {"46-264"};
+	std::string town = {"Komorzno"};
+	std::string VAT = {"751-159-87-52"};
 public:
-	Klient();
-	// dodawanie nowego klienta
-	void wypelnij();
+	Customer();
+	// Adding a new client
+	void addNewCustomer();
 	void menu();
-	void czyszczenieCIN();
-	//wyswietlanie wprowadzonego klienta
-	void wyswietl();
+	void cleaningCIN();
+	//View  customer
+	void show();
 	
-	~Klient();
+	~Customer();
 };
 

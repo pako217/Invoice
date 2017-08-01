@@ -6,130 +6,130 @@
 #include <fstream>
 
 using namespace std;
-Klient::Klient()
+Customer::Customer()
 {
 
 }
-// funkcja wprowadzajaca nowego klineta
-void Klient::wypelnij()
+// Function introducing a new client
+void Customer::addNewCustomer()
 {
 	
-	cout << "Podaj kolejno dane wprowadzonej firmy:" << endl;
-	cout << "Podaj unikatowa nazwe klinet: ";
-	getline(cin, nazwaKlienta);
-	cout << "Podaj nazwe firmy klienta: ";
-	getline(cin, nazwaFirmy);
-	cout << "Podaj nazwe ulicy klienta: ";
-	getline(cin, ulica);
-	cout << "Podaj nr domu klienta: ";
-	getline(cin, nrDomu);
-	cout << "Podaj kod pocztowy w formacie XX-XXX: ";
-	getline(cin, kodPocztowy);
-	cout << "Podaj miejscowosc w ktorej miejsci sie siedziba firmy Klienta: ";
-	getline(cin, miejscowosc);
-	cout << "Podaj nip firmy klienta: ";
-	getline(cin, NIP);
+	cout << "Provide new customer data:" << endl;
+	cout << "Enter the client id: ";
+	getline(cin, customerID);
+	cout << "Enter the name of the client company: ";
+	getline(cin, companyName);
+	cout << "Enter the street where the customer's business is located: ";
+	getline(cin, street);
+	cout << "Provide the customer house number: ";
+	getline(cin, houseNumber);
+	cout << "Please enter the postal code in the format XX-XXX: ";
+	getline(cin, zipCode);
+	cout << "Enter the city where the customer's business is located: ";
+	getline(cin, city);
+	cout << "Enter the customer's tax number: ";
+	getline(cin, VATiD);
 }
 
 
 
-// wyswietlenie wprowadzonego klienta
-void Klient::wyswietl()
+// Displaying the entered customer
+void Customer::show()
 {
 
-	cout <<"Sprzedajacy"<<setw(40)<< "Kupujacy: \n";
-	cout <<Firma<<setw(32) << nazwaFirmy << "\n";
-	cout <<nazUlicy<<" nr.: "<<dom<<setw(30)<< ulica << " nr.: " << nrDomu << "\n";
-	cout <<poczta<<" "<<miejsc<<setw(32)<< kodPocztowy << " " << miejscowosc << "\n";
-	cout << "NIP "<<nip<<setw(28)<<"NIP " << NIP << "\n";
+	cout <<"Seller"<<setw(40)<< "Buyer: \n";
+	cout <<company<<setw(32) << companyName << "\n";
+	cout <<streetName<<" nr.: "<<houseNr<<setw(30)<< street << " nr.: " << houseNumber << "\n";
+	cout <<post<<" "<<town<<setw(32)<< zipCode << " " << city << "\n";
+	cout << "NIP "<<VAT<<setw(28)<<"NIP " << VATiD << "\n";
 }
-void Klient::czyszczenieCIN()
+void Customer::cleaningCIN()
 {
 	bool bCzySukces = cin.good();
 	cin.clear();
 	cin.ignore(numeric_limits < streamsize >::max(), '\n');
 }
-void Klient::menu()
+void Customer::menu()
 {
 	
-	int wybor;
+	int choice;
 
-	cout << "[1]-Dodaj Klienta." << endl;
-	cout << "[2]-Wyswietl wprowadzonego klienta." << endl;
-	cout << "[3]-Dodaj nowy porodukt do magazynu." << endl;
-	cout << "[4]-Wyswietl wprowadzony produkt." << endl;
-	cout << "[5]-Generuj fakture po wprowadzeniu towaru i klienta." << endl;
-	cout << "[6]- Wyjscie z programu" << endl;
+	cout << "[1]-Add a client." << endl;
+	cout << "[2]-Display the entered customer." << endl;
+	cout << "[3]-Add new product to the warehouse." << endl;
+	cout << "[4]-Display the product you have entered." << endl;
+	cout << "[5]-Generate an invoice after placing the item and the customer." << endl;
+	cout << "[6]- Exit" << endl;
 
-	cout << "Wybierz potrzebna opcje ktora chcesz wykonac: " << endl;
-	cin >> wybor;
+	cout << "Select the option you want to perform: " << endl;
+	cin >> choice;
 
-	//czeszczenie bifora cin
-	czyszczenieCIN();
+	//Buffer cleaning cin
+	cleaningCIN();
+	//////////////////////////////////////////////////////////////////////////
+	// #TODO : Definition of a new class object Customer
+	//////////////////////////////////////////////////////////////////////////
 
-	// definicja nowego obiektu klasy Klient
-
-
-	switch (wybor)
+	switch (choice)
 	{
 	case 1:
 	{
 
-		Klient::wypelnij();
+		Customer::addNewCustomer();
 		menu();
 		break;
 	}
 	case 2:
 	{
 
-		Klient::wyswietl();
+		Customer::show();
 		menu();
 		break;
 	}
 	case 3:
 	{
-		Towar::dodaj();
+		Commodity::add();
 		menu();
 		break;
 	}
 	case 4:
 	{
-		Towar::pokaz();
+		Commodity::display();
 		menu();
 		break;
 	}
-	// generowanie faktury
+	// Invoice generation
 	case 5:
 	{
-		// opcja generowania faktury 
-		// proba zapisu danych do pliku.
-		// jest mozliwosc zapisu do pliku kazdej funkcji dodajac w jej ciele informajce  
-		// potrzebne do otwarcia pliku dodaniu nowych informacji i zamknieciu pliku
-		// problem polega na tym i¿ gdy bede chcial tylko wyswietlic dane to moze byc to nie mozliwe
-		// bo beda zapisane do pliku "Faktura vat.txt" 
-		ofstream plik;
-		plik.open("Faktura Vat.txt", ios::out);
-		plik << "Faktura VAT" << endl;
-		Klient::wyswietl();
-		plik << "=========================" << endl;
-		Towar::pokaz();
-		plik.close();
+		//////////////////////////////////////////////////////////////////////////
+		// #TODO : Create overloading function to save data to a file or display data on the screen
+		//////////////////////////////////////////////////////////////////////////
+
+
+		ofstream file;
+		file.open("Invoice Vat.txt", ios::out);
+		file << "Invoice VAT" << endl;
+		Customer::show();
+		file << "=========================" << endl;
+		Commodity::display();
+		file.close();
 		menu();
 		break;
 	}
 	case 6:
 	{
-		cout << "Dziekujemy za skorzystanie z naszego rozwiazania" << endl;
+		cout << "Thank you for using our solution" << endl;
+		cout << "Press enter to end" << endl;
 		break;
 	}
 	default:
-		cout << "Nie ma takiej opcji prosimy sprobowac ponownie: " << endl;
+		cout << "There is no such option, please try again: " << endl;
 		menu();
 		break;
 
 	}
 }
 
-Klient::~Klient()
+Customer::~Customer()
 {
 }
